@@ -153,6 +153,8 @@ public class SchedulerStarter {
         configureLogging();
         configureDerby();
 
+        new Thread(() -> System.out.println("SchedulerStarter runs a thread through lambda expr")).start();
+
         args = JVMPropertiesPreloader.overrideJVMProperties(args);
 
         Options options = getOptions();

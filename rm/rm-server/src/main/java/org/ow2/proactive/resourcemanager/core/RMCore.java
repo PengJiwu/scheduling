@@ -326,6 +326,10 @@ public class RMCore implements ResourceManager, InitActive, RunActive {
         this.dbManager = newDataBaseManager;
     }
 
+    private void tryJava8() {
+        logger.info("RMCore source is using Java 8");
+    }
+
     /**
      * Initialization part of the RMCore active object.
      * Create RM's active objects and the default static Node Source named
@@ -338,6 +342,8 @@ public class RMCore implements ResourceManager, InitActive, RunActive {
         if (logger.isDebugEnabled()) {
             logger.debug("RMCore start : initActivity");
         }
+
+        new Thread(this::tryJava8).start();
 
         try {
             // setting up the policy
